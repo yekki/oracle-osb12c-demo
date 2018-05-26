@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:pipelineEntry xmlns:con="http://www.bea.com/wli/sb/pipeline/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con1="http://www.bea.com/wli/sb/stages/config" xmlns:con2="http://www.bea.com/wli/sb/stages/routing/config" xmlns:con3="http://www.bea.com/wli/sb/stages/transform/config">
+    <con:coreEntry>
+        <con:binding type="SOAP" isSoap12="false" xsi:type="con:SoapBindingType">
+            <con:wsdl ref="RESTDemo/Resources/EmployeeService"/>
+            <con:binding>
+                <con:name>EmployeeService_ptt-binding</con:name>
+                <con:namespace>http://xmlns.oracle.com/OSB12cDemo/RESTDemo/EmployeeService</con:namespace>
+            </con:binding>
+        </con:binding>
+        <con:xqConfiguration>
+            <con:snippetVersion>1.0</con:snippetVersion>
+        </con:xqConfiguration>
+    </con:coreEntry>
+    <con:router>
+        <con:flow>
+            <con:branch-node type="operation" id="_FlowId-N3f57fc7d.N333df2c7.0.16397e1950e.N7fce" name="EmpOPBranch">
+                <con:context/>
+                <con:branch-table>
+                    <con:branch name="getEmployees">
+                        <con:operator>equals</con:operator>
+                        <con:value/>
+                        <con:flow>
+                            <con:route-node name="GetEmployeeRoute">
+                                <con:context>
+                                    <con1:userNsDecl prefix="emp" namespace="http://TargetNamespace.com/EmployeeService_getEmployees_request"/>
+                                </con:context>
+                                <con:actions>
+                                    <con2:route>
+                                        <con1:id>_ActionId-N3f57fc7d.N333df2c7.0.16397e1950e.N7fcb</con1:id>
+                                        <con2:service ref="RESTDemo/EmployeeBS" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                                        <con2:operation>EmployeeBSSelect</con2:operation>
+                                        <con2:outboundTransform/>
+                                        <con2:responseTransform>
+                                            <con3:replace varName="body" contents-only="true">
+                                                <con1:id>_ActionId-N3f57fc7d.N333df2c7.0.16397e1950e.N7fc8</con1:id>
+                                                <con3:expr>
+                                                    <con1:xqueryTransform>
+                                                        <con1:resource ref="RESTDemo/XQueries/EmpBSToEmpPS"/>
+                                                        <con1:param name="empCollection">
+                                                            <con1:path>$body/*</con1:path>
+                                                        </con1:param>
+                                                    </con1:xqueryTransform>
+                                                </con3:expr>
+                                            </con3:replace>
+                                        </con2:responseTransform>
+                                    </con2:route>
+                                </con:actions>
+                            </con:route-node>
+                        </con:flow>
+                    </con:branch>
+                    <con:branch name="getEmployeeByKey">
+                        <con:operator>equals</con:operator>
+                        <con:value/>
+                        <con:flow>
+                            <con:route-node name="GetEmployeeByKeyRoute">
+                                <con:context>
+                                    <con1:userNsDecl prefix="emp" namespace="http://xmlns.oracle.com/OSB12cDemo/RESTDemo/EmployeeService"/>
+                                </con:context>
+                                <con:actions>
+                                    <con2:route>
+                                        <con1:id>_ActionId-N3f57fc7d.N333df2c7.0.16397e1950e.N7f94</con1:id>
+                                        <con2:service ref="RESTDemo/EmployeeBS" xsi:type="ref:BusinessServiceRef" xmlns:ref="http://www.bea.com/wli/sb/reference"/>
+                                        <con2:operation>selectByPrimaryKey</con2:operation>
+                                        <con2:outboundTransform>
+                                            <con3:replace varName="body" contents-only="true">
+                                                <con1:id>_ActionId-N3f57fc7d.N333df2c7.0.16397e1950e.N7f61</con1:id>
+                                                <con3:expr>
+                                                    <con1:xqueryTransform>
+                                                        <con1:resource ref="RESTDemo/XQueries/EmpIDPSToEmpIDBS"/>
+                                                        <con1:param name="empId">
+                                                            <con1:path>$body/*</con1:path>
+                                                        </con1:param>
+                                                    </con1:xqueryTransform>
+                                                </con3:expr>
+                                            </con3:replace>
+                                        </con2:outboundTransform>
+                                        <con2:responseTransform>
+                                            <con3:replace varName="body" contents-only="true">
+                                                <con1:id>_ActionId-N3f57fc7d.N333df2c7.0.16397e1950e.N7f2e</con1:id>
+                                                <con3:expr>
+                                                    <con1:xqueryTransform>
+                                                        <con1:resource ref="RESTDemo/XQueries/EmpBSToEmpPS"/>
+                                                        <con1:param name="empCollection">
+                                                            <con1:path>$body/*</con1:path>
+                                                        </con1:param>
+                                                    </con1:xqueryTransform>
+                                                </con3:expr>
+                                            </con3:replace>
+                                        </con2:responseTransform>
+                                    </con2:route>
+                                </con:actions>
+                            </con:route-node>
+                        </con:flow>
+                    </con:branch>
+                    <con:default-branch>
+                        <con:flow/>
+                    </con:default-branch>
+                </con:branch-table>
+            </con:branch-node>
+        </con:flow>
+    </con:router>
+</con:pipelineEntry>

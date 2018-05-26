@@ -1,0 +1,76 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<application xmlns:soa="http://www.oracle.com/soa/rest" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns0="http://TargetNamespace.com/EmployeeService_getEmployees_request" xmlns="http://wadl.dev.java.net/2009/02">
+   <doc title="EmployeeService">RestService</doc>
+   <grammars>
+      <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://TargetNamespace.com/EmployeeService_getEmployees_request" schemaLocation="Employee.xsd"/>
+        </xsd:schema>
+      <schema targetNamespace="http://xmlns.oracle.com/OSB12cDemo/RESTDemo/EmployeeService" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema">
+            <element name="getEmployeeByKey_params">
+                <complexType>
+                    <sequence>
+                        <element name="employee_id" type="string"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="deleteEmployee_params">
+                <complexType>
+                    <sequence>
+                        <element name="employee_id" type="string"/>
+                    </sequence>
+                </complexType>
+            </element>
+        </schema>
+   </grammars>
+   <resources>
+      <resource path="/Employees">
+         <method name="GET" soa:wsdlOperation="getEmployees">
+            <request/>
+            <response status="200">
+               <representation mediaType="application/xml" element="cns:EmployeeList" xmlns:cns="http://TargetNamespace.com/EmployeeService_getEmployees_request"/>
+               <representation mediaType="application/json" element="cns:EmployeeList" xmlns:cns="http://TargetNamespace.com/EmployeeService_getEmployees_request"/>
+            </response>
+         </method>
+         <method name="POST" soa:wsdlOperation="createEmployee">
+            <request>
+               <representation mediaType="application/xml" element="cns:EmployeeList" xmlns:cns="http://TargetNamespace.com/EmployeeService_getEmployees_request"/>
+               <representation mediaType="application/json" element="cns:EmployeeList" xmlns:cns="http://TargetNamespace.com/EmployeeService_getEmployees_request"/>
+            </request>
+            <response status="200">
+               <representation mediaType="application/xml" element="cns:EmployeeList" xmlns:cns="http://TargetNamespace.com/EmployeeService_getEmployees_request"/>
+               <representation mediaType="application/json" element="cns:EmployeeList" xmlns:cns="http://TargetNamespace.com/EmployeeService_getEmployees_request"/>
+            </response>
+         </method>
+         <method name="PUT" soa:wsdlOperation="updateEmployee">
+            <request>
+               <representation mediaType="application/xml" element="cns:EmployeeList" xmlns:cns="http://TargetNamespace.com/EmployeeService_getEmployees_request"/>
+               <representation mediaType="application/json" element="cns:EmployeeList" xmlns:cns="http://TargetNamespace.com/EmployeeService_getEmployees_request"/>
+            </request>
+            <response status="200">
+               <representation mediaType="application/xml" element="cns:EmployeeList" xmlns:cns="http://TargetNamespace.com/EmployeeService_getEmployees_request"/>
+               <representation mediaType="application/json" element="cns:EmployeeList" xmlns:cns="http://TargetNamespace.com/EmployeeService_getEmployees_request"/>
+            </response>
+         </method>
+      </resource>
+      <resource path="/Employees/{employee_id}">
+         <method name="GET" soa:wsdlOperation="getEmployeeByKey">
+            <request soa:paramElement="pns:getEmployeeByKey_params" xmlns:pns="http://xmlns.oracle.com/OSB12cDemo/RESTDemo/EmployeeService">
+               <param name="employee_id" style="template" soa:expression="$msg.request/pns:employee_id" type="xsd:string"/>
+            </request>
+            <response status="200">
+               <representation mediaType="application/xml" element="cns:EmployeeList" xmlns:cns="http://TargetNamespace.com/EmployeeService_getEmployees_request"/>
+               <representation mediaType="application/json" element="cns:EmployeeList" xmlns:cns="http://TargetNamespace.com/EmployeeService_getEmployees_request"/>
+            </response>
+         </method>
+         <method name="DELETE" soa:wsdlOperation="deleteEmployee">
+            <request soa:paramElement="pns:deleteEmployee_params" xmlns:pns="http://xmlns.oracle.com/OSB12cDemo/RESTDemo/EmployeeService">
+               <param name="employee_id" style="template" soa:expression="$msg.request/pns:employee_id" type="xsd:string"/>
+            </request>
+            <response status="200">
+               <representation mediaType="application/xml" element="cns:EmployeeList" xmlns:cns="http://TargetNamespace.com/EmployeeService_getEmployees_request"/>
+               <representation mediaType="application/json" element="cns:EmployeeList" xmlns:cns="http://TargetNamespace.com/EmployeeService_getEmployees_request"/>
+            </response>
+         </method>
+      </resource>
+   </resources>
+</application>

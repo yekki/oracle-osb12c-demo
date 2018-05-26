@@ -1,0 +1,28 @@
+{
+    "Employee" : [
+        {
+            "employeeId" : "100",
+            "firstName" : "fname",
+            "lastName" : "lname",
+            "email" : "fn@gmail.com",
+            "phoneNumber" : "9848012345",
+            "jobId" : "100",
+            "salary" : "100",
+            "commissionPct" : "100",
+            "managerId" : "100",
+            "departmentId" : "100"
+        },
+        {
+            "employeeId" : "101",
+            "firstName" : "fname1",
+            "lastName" : "lname1",
+            "email" : "fn1@gmail.com",
+            "phoneNumber" : "9848012345",
+            "jobId" : "100",
+            "salary" : "100",
+            "commissionPct" : "100",
+            "managerId" : "101",
+            "departmentId" : "101"
+        }
+    ]
+}
