@@ -30,6 +30,7 @@
    <list n="listOfChildren">
       <hash><url n="URL" path="DVMDemo/DVMDemo.jpr"/></hash>
       <hash><url n="URL" path="OneWaySSLDemo/OneWaySSLDemo.jpr"/></hash>
+      <hash><url n="URL" path="OutboundSSLDemo/OutboundSSLDemo.jpr"/></hash>
       <hash><url n="URL" path="RESTDemo/RESTDemo.jpr"/></hash>
       <hash><url n="URL" path="SecurePSDemo/SecurePSDemo.jpr"/></hash>
       <hash><url n="URL" path="TwoWaySSLDemo/TwoWaySSLDemo.jpr"/></hash>

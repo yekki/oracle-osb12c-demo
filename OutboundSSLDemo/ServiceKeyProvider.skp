@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml-fragment xmlns:ser="http://www.bea.com/wli/sb/services">
+  <ser:description/>
+  <ser:credentials>
+    <ser:key-pair purpose="SSL">
+      <ser:alias>osb-cert</ser:alias>
+      <ser:password>password</ser:password>
+    </ser:key-pair>
+  </ser:credentials>
+</xml-fragment>

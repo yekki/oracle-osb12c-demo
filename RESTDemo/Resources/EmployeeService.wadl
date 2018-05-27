@@ -1,8 +1,7 @@
-<?xml version = '1.0' encoding = 'UTF-8'?>
 <application xmlns:soa="http://www.oracle.com/soa/rest" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns0="http://TargetNamespace.com/EmployeeService_getEmployees_request" xmlns="http://wadl.dev.java.net/2009/02">
    <doc title="EmployeeService">RestService</doc>
    <grammars>
-      <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <xsd:schema>
             <xsd:import namespace="http://TargetNamespace.com/EmployeeService_getEmployees_request" schemaLocation="Employee.xsd"/>
         </xsd:schema>
       <schema targetNamespace="http://xmlns.oracle.com/OSB12cDemo/RESTDemo/EmployeeService" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema">
