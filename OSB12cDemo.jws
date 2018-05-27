@@ -32,6 +32,7 @@
       <hash><url n="URL" path="OneWaySSLDemo/OneWaySSLDemo.jpr"/></hash>
       <hash><url n="URL" path="RESTDemo/RESTDemo.jpr"/></hash>
       <hash><url n="URL" path="SecurePSDemo/SecurePSDemo.jpr"/></hash>
+      <hash><url n="URL" path="TwoWaySSLDemo/TwoWaySSLDemo.jpr"/></hash>
    </list>
    <hash n="oracle.jdeveloper.deploy.dt.DeploymentProfiles">
       <hash n="profileDefinitions">
